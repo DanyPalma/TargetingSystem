@@ -1,7 +1,6 @@
 import cv2
 import numpy as np
 
-
 tCoord = (300,200)
 
 def aPos(mask):
@@ -22,6 +21,8 @@ def aPos(mask):
     return (int(xA), int(yA))
 
 capture = cv2.VideoCapture(0)
+f = open('coordlog.txt', 'a')
+f.truncate(0)
 
 while(True):
 
@@ -43,9 +44,7 @@ while(True):
 
 
     coord = aPos(maskVid)
-    print(coord)
-
-
+    f.write(f'{str(coord)}\n')
 
     if coord != (0, 0):
         tCoord = coord
