@@ -3,7 +3,7 @@
 import cv2
 from random import randrange
 #loading pre trained face data from opencv
-trained_data = cv2.CascadeClassifier('TargetingSystem/haarcascade_frontalface_default.xml')
+trained_data = cv2.CascadeClassifier('TargetingSystem/Sources/haarcascade_frontalface_default.xml')
 
 #grabbing webcam 
 webcam = cv2.VideoCapture(0, cv2.CAP_DSHOW)

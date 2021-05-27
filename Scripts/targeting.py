@@ -7,8 +7,7 @@ import numpy as np
 from datetime import datetime
 from colorama import Fore, Style
 
-# Local file? You need to fix this #
-trained_data = cv2.CascadeClassifier('TargetingSystem/haarcascade_frontalface_default.xml')
+trained_data = cv2.CascadeClassifier('TargetingSystem/Sources/haarcascade_frontalface_default.xml')
 tCoord = (300,200)
 capture = cv2.VideoCapture(0)
 showHSV = False 
@@ -36,7 +35,7 @@ def aPos(mask):
 # Arguments #
 args = sys.argv
 args.pop(0)
-log = open('coordlog.txt', 'a')
+log = open('TargetingSystem/Sources/coordlog.txt', 'a')
 log.truncate(0)
 log.write(f'> Coord Log from {datetime.now()}\n\n')
 for arg in args:
@@ -61,7 +60,7 @@ if len(args) == 0:
 
 
 # Main Loop #
-# Think of some way to exit this loop. While trues are scary # 
+# Think of some way to exit this loop. While trues are scary - gui?  # 
 while True:
 	ret, frame = capture.read()
 	greyscale_frame = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
