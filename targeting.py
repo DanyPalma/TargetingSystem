@@ -1,61 +1,102 @@
-import cv2
-import numpy as np
+# Made by github.com/cfrankovich
 
-tCoord = (300,200)
+import os
+import sys
+from sys import platform
+import json
+from colorama import Fore, Back, Style 
 
-def aPos(mask):
-    xA = 0
-    yA = 0
-    count = 0
-    resolution = 10
-    for y in range(0, height, resolution):
-        for x in range(0, width, resolution):
-            if mask[y][x] == 255:
-                xA += x
-                yA += y
-                count += 1
+import Ping as ping
+import Calc as calc
+import Globals as gb
+import Help as hp
+import About as ab
+import EightBall as eb
+import Settings as st
 
-    if count > 0:
-        xA = xA / count
-        yA = yA / count
-    return (int(xA), int(yA))
+# Test Command
+def ping():
+    print('pong!')
 
-capture = cv2.VideoCapture(0)
-f = open('coordlog.txt', 'a')
-f.truncate(0)
+# Exit Command
+def exitapp():
+    if gb.clearonexit:
+        if gb.linux:
+            os.system('clear')
+        else:
+            os.system('cls')
+    gb.running = False
 
-while(True):
-
-    ret, frame = capture.read()
- 
-    HSV = cv2.cvtColor(frame, cv2.COLOR_BGR2HLS_FULL)
-
-    lowerV = np.array([80, 230, 100])
-    upperV = np.array([255, 255, 255])
-
-    maskVid = cv2.inRange(HSV, lowerV, upperV)
- 
-
-    cv2.imshow('video HSV', HSV)
-    cv2.imshow('video original', frame)
-
-    width  = int(capture.get(cv2.CAP_PROP_FRAME_WIDTH))
-    height = int(capture.get(cv2.CAP_PROP_FRAME_HEIGHT))
-
-
-    coord = aPos(maskVid)
-    f.write(f'{str(coord)}\n')
-
-    if coord != (0, 0):
-        tCoord = coord
-        roundBoi = cv2.circle(maskVid, coord, 25, (255, 255, 0), 2)
+# Clear Command
+def clear():
+    if gb.linux:
+        os.system('clear')
     else:
-        roundBoi = cv2.circle(maskVid, tCoord, 25, (255, 0, 0), 2)
+        os.system('cls')
 
-    cv2.imshow('FINAL DISPLAY', maskVid)
+# Literally Does Nothing
+def nothing():
+    print('', end='')
 
-    if cv2.waitKey(1) == 27:
-        break
+comlist = {
+    'calc' : calc.calculator,
+    'ping' : ping,
+    'exit' : exitapp,
+    'clear' : clear,
+    'cls' : clear,
+    '' : nothing,
+    'help' : hp.help,
+    'about' : ab.about,
+    '8ball' : eb.eightball,
+    'settings' : st.settings
+}
 
-capture.release()
-cv2.destroyAllWindows()
+
+def applySettings():
+    try:
+        f = open('Config.json', encoding='utf-8')
+    except Exception:
+        print(f'{Style.RED}Error loading the {Style.BRIGHT}Config.json{Style.NORMAL} file.')
+    config = json.load(f)
+    gb.prefix = config['prefix']
+    gb.clearonstartup = config['clearonstart']
+    gb.clearonexit = config['clearonexit']
+    gb.clearcalccli = config['clearcalccli']
+    
+
+def getinput():
+    try:
+        com = input(gb.prefix + ' ')
+    except:
+        print(f'{Fore.RED}Something is wrong with the {Style.BRIGHT}prefix{Style.NORMAL} setting in the {Style.BRIGHT}Config.json{Style.NORMAL} file!')
+        exit() 
+    return com
+
+
+def main():
+    while gb.running:
+        gb.command = getinput()
+        command = gb.command
+        keyword = command.split(' ')[0]
+        try:
+            comlist[keyword]()
+        except:
+            print(f'{Fore.RED}Command {Style.BRIGHT}{keyword}{Style.NORMAL} not found!{Fore.WHITE}')
+
+if __name__ == '__main__':
+    gb.initialize()
+    applySettings()
+    if gb.clearonstartup: 
+        if platform == 'linux' or platform == 'linux2':
+            gb.linux = True
+            os.system('clear')
+        elif platform == 'win32':
+            gb.linux = False
+            os.system('cls')
+        elif platform == 'darwin':
+            print('ew... mac user... CRINGE!')
+            sys.exit()
+        else:
+            print('wtf is ur OS')
+            sys.exit()
+    main()
