@@ -13,7 +13,7 @@ tCoord = (300,200)
 capture = cv2.VideoCapture(0)
 showHSV = False 
 showCAM = False
-
+running = True
 
 # Helper function aPos #
 def aPos(mask):
@@ -62,7 +62,7 @@ if len(args) == 0:
 
 # Main Loop #
 # Think of some way to exit this loop. While trues are scary # 
-while True:
+while running:
 	ret, frame = capture.read()
 	greyscale_frame = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
  
@@ -100,8 +100,9 @@ while True:
 		cv2.rectangle(frame,(x,y),(x+w,y+h),(0, 255, 0),2)
 
 	# this doesnt even work to break the loop #
-	if cv2.waitKey(1) == 27:
-		break
+	if cv2.waitKey(33) == ord('q'):
+        	cv2.destroyAllWindows()
+        	running = False
 
 capture.release()
 cv2.destroyAllWindows()
