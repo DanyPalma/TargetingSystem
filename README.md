@@ -49,9 +49,9 @@ This is the same as running [all](#all)
 Of course you can use each option in any order you wish. 
 
 ### To-Do
-  need to make it choose the brightest pixel always
-  object recognition using cv::DetectionBasedTracker or
-  face recognition using cv::face::BasicFaceRecognizer
+ - need to make it choose the brightest pixel always
+ - object recognition using cv::DetectionBasedTracker or
+ - face recognition using cv::face::BasicFaceRecognizer
   
 ### Questions
 For any questions please dm DNWMN#8684 or carson#6108 on discord!
