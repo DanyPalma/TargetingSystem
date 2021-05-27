@@ -54,6 +54,6 @@ Of course you can use each option in any order you wish.
  - face recognition using cv::face::BasicFaceRecognizer
   
 ### Questions
-For any questions please dm DNWMN#8684 or carson#6108 on discord!
+For any questions please dm DNWMN#8684 on discord!
 
 ![gif](https://i.imgur.com/bA7YeFM.gif)
