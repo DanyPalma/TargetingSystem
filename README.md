@@ -24,6 +24,8 @@ Now you can simply run the file with the [options](#options) you want to have.
 $ python targeting.py <options>
 ```
 
+To quit or exit the application simply press `q` while the app is in focus.
+
 ### Options
 There are only a few options but I'll cover them one by one. If you don't put any arguments it is the same as putting [all](#all).
 
