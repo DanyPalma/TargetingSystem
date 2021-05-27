@@ -71,7 +71,7 @@ while(True):
 	height = int(capture.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
 	coord = aPos(maskVid)
-	# log.write(f'{coord}\n')
+	log.write(f'{coord}\n')
 
 	if coord != (0, 0):
 		tCoord = coord
