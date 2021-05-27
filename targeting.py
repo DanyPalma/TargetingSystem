@@ -8,7 +8,7 @@ from datetime import datetime
 from colorama import Fore, Style
 
 # Local file? You need to fix this #
-trained_data = cv2.CascadeClassifier('C:\\Users\\danie\\Desktop\\haarcascade_frontalface_default.xml')
+trained_data = cv2.CascadeClassifier('TargetingSystem/haarcascade_frontalface_default.xml')
 tCoord = (300,200)
 capture = cv2.VideoCapture(0)
 showHSV = False 
