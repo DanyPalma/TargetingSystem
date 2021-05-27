@@ -21,7 +21,7 @@ Once you have installed the module and made sure you have a webcam, you can run 
 ```bash
 $ python targeting.py
 ```
-This should pop up three windows displaying the target window, a thermal window, and your normal webcam output.
+This should pop up three windows displaying the target window, an HSV window, and your normal webcam output.
 
 ### To-Do
   need to make it choose the brightest pixel always
