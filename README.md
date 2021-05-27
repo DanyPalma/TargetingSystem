@@ -49,7 +49,7 @@ This is the same as running [all](#all)
 Of course you can use each option in any order you wish. 
 
 ### Demo
-![Demo GIF](https://i.imgur.com/LpSVKcJ.gif)
+![Demo GIF](https://i.imgur.com/DonuieV.gif)
 
 ### To-Do
   need to make it choose the brightest pixel always
