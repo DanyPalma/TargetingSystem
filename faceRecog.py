@@ -1,3 +1,5 @@
+ # github.com/DanyPalma #
+# github.com/cfrankovich #
 import cv2
 from random import randrange
 #loading pre trained face data from opencv
