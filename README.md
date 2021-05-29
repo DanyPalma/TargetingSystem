@@ -56,4 +56,8 @@ Of course you can use each option in any order you wish.
 ### Questions
 For any questions please dm DNWMN#8684 on discord!
 
+### Thank you
+- thank you to martin for the amongus datasets and the initial idea
+- thank you to carson for the help throughout this project 
+
 ![gif](https://i.imgur.com/bA7YeFM.gif)
